@@ -21,10 +21,24 @@ async function insertRow(articleNumber: number, title: string, date: string) {
   }
 }
 
+// check if newsletter id exists
+async function checkNewsletterPresent(articleNumber: number) {
+  const data = await sqlite.execute({
+    sql: `SELECT EXISTS(SELECT 1 FROM newsletter WHERE article_number=:articleNumber)`,
+    args: { articleNumber },
+  });
+
+  return data.rows.length === 1;
+}
+
 (async () => {
   try {
     const data = await webScrapeBytesNewsletter();
-    await insertRow(data.id, data.title, data.date);
+    const isPresent = await checkNewsletterPresent(data.id);
+    if (!isPresent) {
+      // insert and notify
+      await insertRow(data.id, data.title, data.date);
+    }
   } catch (err) {
     console.error("Error scraping newsletter ", err);
   }
