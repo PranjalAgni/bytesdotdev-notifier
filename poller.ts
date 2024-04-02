@@ -32,7 +32,8 @@ async function checkNewsletterPresent(articleNumber: number) {
   return data.rows.length === 1;
 }
 
-(async () => {
+// cron scheduled
+export const scheduledNotifier = async (interval: Interval) => {
   try {
     const data = await webScrapeBytesNewsletter();
     const isPresent = await checkNewsletterPresent(data.id);
@@ -43,15 +44,15 @@ async function checkNewsletterPresent(articleNumber: number) {
       await insertRow(data.id, data.title, data.date);
 
       const response = await pushover({
-        token: Deno.env.get("PO_API_TOKEN"),
-        user: Deno.env.get("PO_USER_KEY"),
+        token: Deno.env.get("PO_API_TOKEN")!,
+        user: Deno.env.get("PO_USER_KEY")!,
         title: `Latest bytes.dev newsletter dropped ${data.date}`,
         message: data.title,
         url: `https://bytes.dev/archives/${data.id}`,
       });
-      console.log("Pushover status: ", response.status);
+      console.log("Notified: ", response);
     }
   } catch (err) {
     console.error("Error scraping newsletter ", err);
   }
-})();
+};

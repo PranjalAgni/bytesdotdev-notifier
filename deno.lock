@@ -3,6 +3,7 @@
   "packages": {
     "specifiers": {
       "npm:@libsql/client": "npm:@libsql/client@0.6.0",
+      "npm:@types/node": "npm:@types/node@18.16.19",
       "npm:cheerio": "npm:cheerio@1.0.0-rc.12",
       "npm:zod": "npm:zod@3.22.4"
     },
@@ -249,8 +250,11 @@
     }
   },
   "redirects": {
+    "https://esm.town/v/pranjaldotdev/pushover": "https://esm.town/v/pranjaldotdev/pushover?v=4",
     "https://esm.town/v/pranjaldotdev/scraper": "https://esm.town/v/pranjaldotdev/scraper?v=1",
     "https://esm.town/v/std/API_URL": "https://esm.town/v/std/API_URL?v=5",
+    "https://esm.town/v/std/fetch": "https://esm.town/v/std/fetch?v=4",
+    "https://esm.town/v/std/rawFetch": "https://esm.town/v/std/rawFetch?v=1",
     "https://esm.town/v/std/sqlite": "https://esm.town/v/std/sqlite?v=5"
   },
   "remote": {
