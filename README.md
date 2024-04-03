@@ -17,3 +17,7 @@ At the lowest level it is powered by `3` main scripts, which are invoked by a sc
 - *scraper* Goes to bytes.dev and scrapes latest published newsletter
 - *inserter* Insert it to SQLite if this newsletter already not exists
 - *notifier* Uses Pushover API to send ios mobile notifications
+
+### Pushover notifications
+
+![image](https://github.com/PranjalAgni/bytesdotdev-notifier/assets/26196076/f0a73a88-7bbe-4af8-b633-22fa5121f4f8)
