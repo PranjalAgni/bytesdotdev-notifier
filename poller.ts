@@ -37,7 +37,7 @@ export const scheduledNotifier = async (interval: Interval) => {
   try {
     const data = await webScrapeBytesNewsletter();
     const isPresent = await checkNewsletterPresent(data.id);
-    if (!isPresent) {
+    if (isPresent) {
       console.log(`Article ${data.id} already exists!!!`);
     } else {
       // insert and notify
