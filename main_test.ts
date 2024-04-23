@@ -1,3 +1,4 @@
+// write some tests
 import { assertEquals } from "jsr:@std/assert";
 import { add } from "./main.ts";
 
